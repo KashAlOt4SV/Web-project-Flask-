@@ -12,24 +12,24 @@
 <header>
     <nav class="navbar navbar-light bg-light">
         <div class="alert alert-danger" role="alert">
-            <a class="navbar-brand" href="https://realynigga.herokuapp.com/# ">Кулинария</a></div>
+            <a class="navbar-brand" href="http://127.0.0.1:5000/# ">Кулинария</a></div>
         <div class="alert alert-warning" role="alert">
-            <a class="navbar-brand" href="Bird">Птица</a>
-            <a class="navbar-brand" href="Meet">Мясо</a>
-            <a class="navbar-brand" href="Fish">Рыба</a>
-            <a class="navbar-brand" href="Soups">Супы</a>
-            <a class="navbar-brand" href="Salads">Салаты</a>
-            <a class="navbar-brand" href="Desserts">Десерты</a>
-            <a class="navbar-brand" href="Cocktail">Коктейли</a>
+            <a class="navbar-brand" href="http://127.0.0.1:5000/Bird">Птица</a>
+            <a class="navbar-brand" href="http://127.0.0.1:5000/Meet">Мясо</a>
+            <a class="navbar-brand" href="http://127.0.0.1:5000/Fish">Рыба</a>
+            <a class="navbar-brand" href="http://127.0.0.1:5000/Soups">Супы</a>
+            <a class="navbar-brand" href="http://127.0.0.1:5000/Salads">Салаты</a>
+            <a class="navbar-brand" href="http://127.0.0.1:5000/Desserts">Десерты</a>
+            <a class="navbar-brand" href="http://127.0.0.1:5000/Cocktail">Коктейли</a>
         </div>
         {% if current_user.is_authenticated %}
         <div class="alert alert-danger" role="alert">
-            <a class="navbar-brand" href="https://realynigga.herokuapp.com/profile" style="float:right">{{ current_user.name }}</a>
+            <a class="navbar-brand" href="http://127.0.0.1:5000/profile" style="float:right">{{ current_user.name }}</a>
         </div>
         {% else %}
         <p>
-            <a class="btn btn-primary " href="https://realynigga.herokuapp.com/register">Зарегистрироваться</a>
-            <a class="btn btn-success" href="https://realynigga.herokuapp.com/login">Войти</a>
+            <a class="btn btn-primary " href="http://127.0.0.1:5000/register">Зарегистрироваться</a>
+            <a class="btn btn-success" href="http://127.0.0.1:5000/login">Войти</a>
         </p>
         {% endif %}
     </nav>
