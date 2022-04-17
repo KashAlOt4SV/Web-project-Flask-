@@ -32,7 +32,6 @@ def main():
 
 @app.route("/")
 def index():
-    db_sess = db_session.create_session()
     return render_template("index.html")
 
 
