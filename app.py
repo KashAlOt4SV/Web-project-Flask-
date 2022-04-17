@@ -33,7 +33,7 @@ def main():
 @app.route("/")
 def index():
     db_sess = db_session.create_session()
-    return render_template("index.html", news=news)
+    return render_template("index.html")
 
 
 @app.route('/register', methods=['GET', 'POST'])
