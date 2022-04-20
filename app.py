@@ -1,8 +1,9 @@
+# импортируем все необходимые модули
 from flask import Flask, render_template, redirect, request, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+import os
 
 from data import db_session
-from data.news import News
 from data.users import User
 from forms.user import RegisterForm, LoginForm
 
@@ -12,12 +13,14 @@ login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
+# создаем функцию для добавления ползователя в БД
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
     return db_sess.query(User).get(user_id)
 
 
+# создаем функцию для выхода из аккаунта
 @app.route('/logout')
 @login_required
 def logout():
@@ -25,16 +28,20 @@ def logout():
     return redirect("/")
 
 
+# создаем функцию для запуска приложения
 def main():
+    port = int(os.environ.get("PORT", 5000))
     db_session.global_init("blogs.db")
-    app.run()
+    app.run(host='0.0.0.0', port=port)
 
 
+# создаем функцию для главной страницы приложения
 @app.route("/")
 def index():
     return render_template("index.html")
 
 
+# создаем функцию для страницы регистрации приложения
 @app.route('/register', methods=['GET', 'POST'])
 def reqister():
     form = RegisterForm()
@@ -58,6 +65,7 @@ def reqister():
     return render_template('register.html', title='Регистрация', form=form)
 
 
+# создаем функцию для страницы входа приложения
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -71,73 +79,76 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
+# создаем функцию для страницы профиля приложения
 @app.route('/profile')
 def profile():
     return render_template("profile.html")
 
 
+# создаем функции для страниц разделов приложения
 @app.route('/Bird')
-def Bird():
+def bird():
     return render_template("design/Bird.html")
 
 
 @app.route('/Meet')
-def Meet():
+def meet():
     return render_template("design/Meet.html")
 
 
 @app.route('/Fish')
-def Fish():
+def fish():
     return render_template("design/Fish.html")
 
 
 @app.route('/Soups')
-def Soups():
+def soups():
     return render_template("design/Soups.html")
 
 
 @app.route('/Salads')
-def Salads():
+def salads():
     return render_template("design/Salats.html")
 
 
 @app.route('/Desserts')
-def Desserts():
+def desserts():
     return render_template("design/Desserts.html")
 
 
 @app.route('/Cocktail')
-def Cocktails():
+def cocktails():
     return render_template("design/Cocktails.html")
 
 
+# создаем функции для страниц рецептов приложения
 @app.route('/meet1')
-def Meet1():
+def meet1():
     return render_template("meet/meet_res_1.html")
 
 
 @app.route('/meet2')
-def Meet2():
+def meet2():
     return render_template("meet/meet_res_2.html")
 
 
 @app.route('/meet3')
-def Meet3():
+def meet3():
     return render_template("meet/meet_res_3.html")
 
 
 @app.route('/meet4')
-def Meet4():
+def meet4():
     return render_template("meet/meet_res_4.html")
 
 
 @app.route('/meet5')
-def Meet5():
+def meet5():
     return render_template("meet/meet_res_5.html")
 
 
 @app.route('/meet6')
-def Meet6():
+def meet6():
     return render_template("meet/meet_res_6.html")
 
 
@@ -152,32 +163,32 @@ def Bird2():
 
 
 @app.route('/bird3')
-def Bird3():
+def bird3():
     return render_template("bird/bird_res_3.html")
 
 
 @app.route('/bird4')
-def Bird4():
+def bird4():
     return render_template("bird/bird_res_4.html")
 
 
 @app.route('/bird5')
-def Bird5():
+def bird5():
     return render_template("bird/bird_res_5.html")
 
 
 @app.route('/bird6')
-def Bird6():
+def bird6():
     return render_template("bird/bird_res_6.html")
 
 
 @app.route('/fish1')
-def Fish1():
+def fish1():
     return render_template("fish/fish_res_1.html")
 
 
 @app.route('/fish2')
-def Fish2():
+def fish2():
     return render_template("fish/fish_res_2.html")
 
 
@@ -187,17 +198,17 @@ def Fish3():
 
 
 @app.route('/fish4')
-def Fish4():
+def fish4():
     return render_template("fish/fish_res_4.html")
 
 
 @app.route('/fish5')
-def Fish5():
+def fish5():
     return render_template("fish/fish_res_5.html")
 
 
 @app.route('/fish6')
-def Fish6():
+def fish6():
     return render_template("fish/fish_res_6.html")
 
 

@@ -1,3 +1,4 @@
+# импортируем все необходимые модули
 import sqlalchemy as sa
 import sqlalchemy.orm as orm
 from sqlalchemy.orm import Session
@@ -31,4 +32,4 @@ def global_init(db_file):
 
 def create_session() -> None:
     global __factory
-    return __factory
+    return __factory()
